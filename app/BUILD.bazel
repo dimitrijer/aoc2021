@@ -15,5 +15,6 @@ haskell_binary(
     visibility = ["//visibility:public"],
     deps = [
         "//src:base",
+        "//src:day01",
     ],
 )

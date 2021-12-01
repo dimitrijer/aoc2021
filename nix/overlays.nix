@@ -6,6 +6,7 @@ self: super: {
   # Override ghc, adding all project dependencies as toolchain packages.
   ghc_8_10_4 = self.haskellPackages.ghcWithPackages (
     ps: with ps; [
+      split
       ormolu
     ]
   );

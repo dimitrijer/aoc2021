@@ -14,3 +14,16 @@ package(
 haskell_toolchain_library(
     name = "base",
 )
+
+haskell_toolchain_library(
+    name = "split",
+)
+
+haskell_library(
+    name = "day01",
+    srcs = ["Day01.hs"],
+    deps = [
+        ":base",
+        ":split",
+    ],
+)
