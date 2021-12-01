@@ -1,0 +1,16 @@
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_library",
+    "haskell_toolchain_library",
+)
+
+package(
+    default_visibility = [
+        "//app:__pkg__",
+        "//test:__pkg__",
+    ],
+)
+
+haskell_toolchain_library(
+    name = "base",
+)
