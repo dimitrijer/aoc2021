@@ -31,5 +31,7 @@ pkgs.mkShell {
     openjdk11
     haskell-language-server
     nixpkgs-fmt
+    ormolu
+    ghcid
   ];
 }
