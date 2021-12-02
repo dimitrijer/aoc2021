@@ -1,5 +1,10 @@
 let
   pkgs = import ./nix/default.nix { };
+  sources = import ./nix/sources.nix;
+  pkgs_2105 = import sources.nixpkgs_2105 {
+      overlays = [];
+      config = {};
+  };
 in
 pkgs.mkShell {
   # GNU ls has different CLI options than Darwin ls.
@@ -25,13 +30,12 @@ pkgs.mkShell {
     nix
     # buildifier, buildozer and unused-deps
     bazel-buildtools
-    bazel_4
-    neovim
-    ghc_8_10_4
+    pkgs_2105.bazel_4
     openjdk11
+    # Haskell stuff
+    ghc_8_10_7
     haskell-language-server
     nixpkgs-fmt
     ormolu
-    ghcid
   ];
 }
