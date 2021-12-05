@@ -16,5 +16,6 @@ haskell_binary(
     deps = [
         "//src:base",
         "//src:day01",
+        "//src:day02",
     ],
 )

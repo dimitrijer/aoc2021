@@ -27,3 +27,11 @@ haskell_library(
         ":split",
     ],
 )
+
+haskell_library(
+    name = "day02",
+    srcs = ["Day02.hs"],
+    deps = [
+        ":base",
+    ],
+)

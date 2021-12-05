@@ -1,6 +1,7 @@
 module Main where
 
 import Day01
+import Day02
 import System.Environment
 import Text.Printf
 
@@ -8,6 +9,7 @@ runDay :: String -> Int -> IO ()
 runDay input day = do
   case day of
     1 -> do print $ Day01.partOne input; print $ Day01.partTwo input
+    2 -> do print $ Day02.partOne input; print $ Day02.partTwo input
     _ -> do putStrLn $ "Unknown day: " ++ show day
 
 main :: IO ()
