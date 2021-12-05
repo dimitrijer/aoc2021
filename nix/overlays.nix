@@ -8,6 +8,7 @@ self: super: {
     ps: with ps; [
       split
       ormolu
+      hspec
     ]
   );
 }

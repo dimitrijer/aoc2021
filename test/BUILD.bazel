@@ -1,0 +1,18 @@
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_toolchain_library",
+)
+load("//macros:defs.bzl", "haskell_spec_test")
+
+haskell_toolchain_library(
+    name = "hspec",
+)
+
+haskell_spec_test(
+    name = "day01_test",
+    srcs = ["Day01Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day01",
+    ],
+)
