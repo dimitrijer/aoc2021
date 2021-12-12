@@ -11,16 +11,28 @@
         "url": "https://github.com/nmattia/niv/archive/5830a4dd348d77e39a0f3c4c762ff2663b602d4c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixfiles": {
+        "branch": "main",
+        "description": "dimitrije's nixfiles",
+        "homepage": "https://github.com/dimitrijer/nixfiles",
+        "owner": "dimitrijer",
+        "repo": "nixfiles",
+        "rev": "dc043a478cccd83fd755b9099a6e94fcb891b082",
+        "sha256": "0zxivv0i499724xsns5m93pkyqifv5icrq43l8vk2xl5ndfkkl0c",
+        "type": "tarball",
+        "url": "https://github.com/dimitrijer/nixfiles/archive/dc043a478cccd83fd755b9099a6e94fcb891b082.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
-        "branch": "21.11",
+        "branch": "nixpkgs-unstable",
         "description": "Nix Packages collection",
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31",
-        "sha256": "162dywda2dvfj1248afxc45kcrg83appjd0nmdb541hl7rnncf02",
+        "rev": "e7caea7700d49f1925edc6c796cc320f8aed3011",
+        "sha256": "054w95s4vbg2xjbq557kafm358bw7ys5q6hn5q3gal1f0cks7khr",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e7caea7700d49f1925edc6c796cc320f8aed3011.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs_2105": {

@@ -27,6 +27,7 @@ partOne :: String -> Maybe Int
 partOne input = do
     cmds <- parseCmds input
     let pos = foldr applyCmd (0, 0) cmds
+
         in return $ uncurry (*) pos
 
 -- Part Two --------------------------------------------------------------------

@@ -2,8 +2,13 @@ let
   pkgs = import ./nix/default.nix { };
   sources = import ./nix/sources.nix;
   pkgs_2105 = import sources.nixpkgs_2105 {
-      overlays = [];
-      config = {};
+    overlays = [ ];
+    config = { };
+  };
+  nixfiles = import sources.nixfiles { };
+  neovim = nixfiles.neovim {
+    pkgs = pkgs;
+    withHaskell = true;
   };
 in
 pkgs.mkShell {
@@ -11,6 +16,7 @@ pkgs.mkShell {
   shellHooks = ''
     alias ll='ls -alh --color=auto'
     alias ls='ls -ah --color=auto'
+    alias vim='nvim'
   '';
 
   # Disable Bazel's Xcode toolchain detection which would configure compilers
@@ -37,5 +43,5 @@ pkgs.mkShell {
     haskell-language-server
     nixpkgs-fmt
     ormolu
-  ];
+  ] ++ [ neovim ];
 }
