@@ -35,3 +35,11 @@ haskell_library(
         ":base",
     ],
 )
+
+haskell_library(
+    name = "day03",
+    srcs = ["Day03.hs"],
+    deps = [
+        ":base",
+    ],
+)

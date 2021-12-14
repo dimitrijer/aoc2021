@@ -25,3 +25,12 @@ haskell_spec_test(
         "//src:day02",
     ],
 )
+
+haskell_spec_test(
+    name = "day03_test",
+    srcs = ["Day03Spec.hs"],
+    deps = [
+        "//src:base",
+        "//src:day03",
+    ],
+)
