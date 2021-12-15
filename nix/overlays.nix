@@ -4,11 +4,13 @@ self: super: {
     overrides = self: super: { };
   };
   # Override ghc, adding all project dependencies as toolchain packages.
-  ghc_8_10_7 = self.haskellPackages.ghcWithPackages (
+  ghc = self.haskellPackages.ghcWithPackages (
     ps: with ps; [
       split
-      ormolu
       hspec
     ]
   );
+  haskell-language-server = super.haskell-language-server.override {
+    supportedGhcVersions = [ "8107" ];
+  };
 }

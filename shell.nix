@@ -39,7 +39,7 @@ pkgs.mkShell {
     pkgs_2105.bazel_4
     openjdk11
     # Haskell stuff
-    ghc_8_10_7
+    ghc
     haskell-language-server
     nixpkgs-fmt
     ormolu
