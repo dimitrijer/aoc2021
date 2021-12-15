@@ -1,22 +1,24 @@
 module Day02 where
 
-import Text.Read (readMaybe)
 import Debug.Trace
+import Text.Read (readMaybe)
 
 -- Part One --------------------------------------------------------------------
 
 data Command = Forward Int | Down Int | Up Int
+
 type Pos = (HPos, VPos)
 
 parseCmd :: String -> Maybe Command
 parseCmd input = do
-    delta <- (readMaybe :: String -> Maybe Int) deltaStr
-    case dir of
-        "forward" -> Just (Forward delta)
-        "down" -> Just (Down delta)
-        "up" -> Just (Up delta)
-        _ -> Nothing
-    where (dir : deltaStr : _) = words input
+  delta <- (readMaybe :: String -> Maybe Int) deltaStr
+  case dir of
+    "forward" -> Just (Forward delta)
+    "down" -> Just (Down delta)
+    "up" -> Just (Up delta)
+    _ -> Nothing
+  where
+    (dir : deltaStr : _) = words input
 
 applyCmd :: Command -> Pos -> Pos
 applyCmd (Forward d) (x, y) = (x + d, y)
@@ -25,16 +27,18 @@ applyCmd (Up d) (x, y) = (x, y - d)
 
 partOne :: String -> Maybe Int
 partOne input = do
-    cmds <- parseCmds input
-    let pos = foldr applyCmd (0, 0) cmds
-
-        in return $ uncurry (*) pos
+  cmds <- parseCmds input
+  let pos = foldr applyCmd (0, 0) cmds
+   in return $ uncurry (*) pos
 
 -- Part Two --------------------------------------------------------------------
 
 type HPos = Int
+
 type VPos = Int
+
 type Aim = Int
+
 type Pos' = (HPos, VPos, Aim)
 
 applyCmd' :: Command -> Pos' -> Pos'
