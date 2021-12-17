@@ -34,14 +34,15 @@ pkgs.mkShell {
     cacert
     # for rules_nix
     nix
+    pkgs_2105.bazel_4
     # buildifier, buildozer and unused-deps
     bazel-buildtools
-    pkgs_2105.bazel_4
     openjdk11
-    # Haskell stuff
     ghc
+    # Editor
     haskell-language-server
     nixpkgs-fmt
     ormolu
+    fzf
   ] ++ [ neovim ];
 }
