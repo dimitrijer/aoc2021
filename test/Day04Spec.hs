@@ -30,41 +30,46 @@ spec =
         describe "parseNumBoard" $ do
           context "on simple input" $
             it "returns parsed board" $
-              parseNumBoard "1 2 3 4 5\n6 7 8 9 10\n11 12 13 14 15\n16 17 18 19 20\n21 22 23 24 25\n"
-                `shouldBe` Just (listArray ((0, 0), (4, 4)) [1 .. 25])
+              parseBoard "1 2 3 4 5\n6 7 8 9 10\n11 12 13 14 15\n16 17 18 19 20\n21 22 23 24 25\n"
+                `shouldBe` Just (Board (listArray boardBounds (zip [1 .. 25] (repeat False))))
 
           context "on invalid input" $
             it "returns nothing" $
-              parseNumBoard "1 2 3 a 5\n6 7 8 9 10\n11 12 b 14 15\n16 17 18 c 20\n21 22 23 24 25\n" `shouldBe` Nothing
+              parseBoard "1 2 3 a 5\n6 7 8 9 10\n11 12 b 14 15\n16 17 18 c 20\n21 22 23 24 25\n" `shouldBe` Nothing
 
         describe "mark" $
           context "on single marked number" $
             it "returns 1 in that location" $
-              let nums = listArray boardBounds [1 .. 25]
+              let board = Board (listArray boardBounds (zip [1 .. 25] (repeat False)))
                in do
-                    hits (mark 1 (mkBingo nums)) `shouldBe` listArray boardBounds (True : repeat False)
-                    hits (mark 3 (mkBingo nums)) `shouldBe` listArray boardBounds (False : False : True : repeat False)
-                    hits (mark 25 (mkBingo nums)) `shouldBe` listArray boardBounds (replicate 24 False ++ [True])
+                    mark 1 board `shouldBe` Board (listArray boardBounds (zip [1 .. 25] (True : repeat False)))
+                    mark 3 board `shouldBe` Board (listArray boardBounds (zip [1 .. 25] (False : False : True : repeat False)))
+                    mark 25 board `shouldBe` Board (listArray boardBounds (zip [1 .. 25] (replicate 24 False ++ [True])))
 
         describe "hasBingo" $ do
           context "on non-bingo boards" $
             it "returns false" $ do
-              hasBingo (listArray boardBounds (True : repeat False)) `shouldBe` False
-              hasBingo (listArray boardBounds (False : False : True : repeat False)) `shouldBe` False
-              hasBingo (listArray boardBounds (True : True : True : repeat False)) `shouldBe` False
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (True : repeat False)))) `shouldBe` False
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (False : False : True : repeat False)))) `shouldBe` False
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (True : True : True : repeat False)))) `shouldBe` False
 
           context "on row-bingo boards" $
             it "returns true" $ do
-              hasBingo (listArray boardBounds (replicate 5 True ++ repeat False)) `shouldBe` True
-              hasBingo (listArray boardBounds (replicate 10 False ++ replicate 5 True ++ repeat False)) `shouldBe` True
-              hasBingo (listArray boardBounds (replicate 20 False ++ replicate 5 True)) `shouldBe` True
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (replicate 5 True ++ repeat False)))) `shouldBe` True
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (replicate 10 False ++ replicate 5 True ++ repeat False)))) `shouldBe` True
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (replicate 20 False ++ replicate 5 True)))) `shouldBe` True
 
           context "on column-bingo boards" $
             it "returns true" $ do
-              hasBingo (listArray boardBounds (cycle [False, True, False, False, False])) `shouldBe` True
-              hasBingo (listArray boardBounds (cycle [False, False, True, True, False])) `shouldBe` True
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (cycle [False, True, False, False, False])))) `shouldBe` True
+              isBingo (Board (listArray boardBounds (zip [1 .. 25] (cycle [False, False, True, True, False])))) `shouldBe` True
 
         describe "partOne" $ do
           context "on test input" $
             it "returns expected result" $
               partOne testInput `shouldBe` Just 4512
+
+        describe "partTwo" $ do
+          context "on test input" $
+            it "returns expected result" $
+              partTwo testInput `shouldBe` Just 1924
