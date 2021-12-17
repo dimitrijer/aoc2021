@@ -19,6 +19,10 @@ haskell_toolchain_library(
     name = "split",
 )
 
+haskell_toolchain_library(
+    name = "array",
+)
+
 haskell_library(
     name = "day01",
     srcs = ["Day01.hs"],
@@ -41,5 +45,15 @@ haskell_library(
     srcs = ["Day03.hs"],
     deps = [
         ":base",
+    ],
+)
+
+haskell_library(
+    name = "day04",
+    srcs = ["Day04.hs"],
+    deps = [
+        ":array",
+        ":base",
+        ":split",
     ],
 )

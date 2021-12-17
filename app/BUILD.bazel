@@ -18,5 +18,6 @@ haskell_binary(
         "//src:day01",
         "//src:day02",
         "//src:day03",
+        "//src:day04",
     ],
 )

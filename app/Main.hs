@@ -3,6 +3,7 @@ module Main where
 import Day01
 import Day02
 import Day03
+import Day04
 import System.Environment
 import Text.Printf
 
@@ -12,6 +13,7 @@ runDay input day = do
     1 -> do print $ Day01.partOne input; print $ Day01.partTwo input
     2 -> do print $ Day02.partOne input; print $ Day02.partTwo input
     3 -> do print $ Day03.partOne input; print $ Day03.partTwo input
+    4 -> do print $ Day04.partOne input; print $ Day04.partTwo input
     _ -> do putStrLn $ "Unknown day: " ++ show day
 
 main :: IO ()
